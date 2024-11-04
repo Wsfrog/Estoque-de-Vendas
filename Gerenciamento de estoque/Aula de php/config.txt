@@ -1,0 +1,61 @@
+Como Configurar o Banco de Dados
+Oi! Vamos aprender a configurar o banco de dados do nosso sistema de vendas. Siga os passos abaixo para fazer isso de um jeito fácil!
+
+Passo 1: Criar o Arquivo de Configuração
+Abra a pasta do seu projeto.
+Vá até onde você salvou o seu projeto de "Estoque de Vendas".
+
+Crie um novo arquivo.
+
+Clique com o botão direito dentro da pasta.
+Selecione "Novo" e depois "Arquivo de texto".
+Nomeie o arquivo como config.php.
+Escreva as configurações.
+
+Abra o arquivo config.php que você acabou de criar.
+Copie e cole o seguinte código dentro do arquivo:
+
+<?php
+// config.php
+
+// Informações do banco de dados
+$host = 'localhost'; // Onde o banco de dados está
+$dbname = 'SistemaVideogames'; // Nome do nosso banco de dados
+$user = 'root'; // Nome do usuário para acessar o banco de dados
+$password = ''; // Senha (deixe vazio se não tiver)
+
+// Conectando ao banco de dados
+try {
+    $conexao = new PDO("mysql:host=$host;dbname=$dbname", $user, $password);
+    $conexao->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+} catch (PDOException $e) {
+    die("Erro na conexão: " . $e->getMessage());
+}
+?>
+
+Passo 2: Criar o Banco de Dados
+Abra o programa que você usa para o MySQL.
+Pode ser o XAMPP ou WAMP.
+
+Entre no painel do MySQL.
+Normalmente, você pode fazer isso digitando localhost/phpmyadmin no seu navegador.
+
+Crie um novo banco de dados.
+
+Clique em "Databases" (ou "Banco de Dados").
+Digite SistemaVendas no campo e clique em "Create" (ou "Criar").
+Crie as tabelas.
+(Se você tiver comandos SQL para isso, siga-os ou peça ajuda a alguém).
+
+Passo 3: Ignorar o Arquivo de Configuração
+Para que ninguém veja suas informações, precisamos ignorar o arquivo que acabamos de criar:
+
+Crie um arquivo chamado .gitignore.
+
+Na pasta do seu projeto, clique com o botão direito, selecione "Novo" e depois "Arquivo de texto".
+Nomeie como .gitignore (não esqueça o ponto antes do nome).
+Escreva a linha abaixo.
+
+Abra o arquivo .gitignore e escreva:
+
+config.php
